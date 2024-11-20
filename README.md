@@ -1,5 +1,5 @@
 # IoT Car
-The code for an IoT car created at school.
+The code for an IoT car created at school. Workload for this was equally shared between Joni and Joonas.
 
 The code runs on Node-RED. The car has three sensors that send data to a Raspberry Pi.
 This Pi then sends the data to a web server on the local network using the MQTT protocol,
