@@ -1,0 +1,330 @@
+[
+    {
+        "id": "ea8e64129711faf2",
+        "type": "function",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "func": "\n    if (msg.payload == \"lm_on\") {\n        return[null,msg];\n    }\n    else if (msg.payload == \"rm_on\"){\n        return[msg,null];\n    }\n    else if (msg.payload == \"lm_off\"){\n        return[null,msg]\n    }\n    else if (msg.payload == \"rm_off\"){\n        return[msg,null]\n    }",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "b0a4eb8cb8b0f8fb",
+                "24dd30b477106e1f"
+            ],
+            [
+                "9b3e28e8729261fe",
+                "5d53b8693c827bb6"
+            ]
+        ]
+    },
+    {
+        "id": "8a61208ddea6a5ef",
+        "type": "mqtt in",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "topic": "right_in",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d8fa49495656d294",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 260,
+        "wires": [
+            [
+                "ea8e64129711faf2"
+            ]
+        ]
+    },
+    {
+        "id": "9ace079486438dce",
+        "type": "mqtt in",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "topic": "left_in",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d8fa49495656d294",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 320,
+        "wires": [
+            [
+                "ea8e64129711faf2"
+            ]
+        ]
+    },
+    {
+        "id": "b0a4eb8cb8b0f8fb",
+        "type": "mqtt out",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "topic": "right_out",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d8fa49495656d294",
+        "x": 760,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9b3e28e8729261fe",
+        "type": "mqtt out",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "topic": "left_out",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d8fa49495656d294",
+        "x": 760,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "f2125552b181e636",
+        "type": "ui_gauge",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "group": "ff27841afe253fc8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "right_motor",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 950,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3154ea93782d15d5",
+        "type": "ui_chart",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "group": "ff27841afe253fc8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "200",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 930,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bb4d7db2bc072af7",
+        "type": "ui_gauge",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "group": "ff27841afe253fc8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "left_motor",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 940,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "24dd30b477106e1f",
+        "type": "change",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "rm_on",
+                "fromt": "str",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "rm_off",
+                "fromt": "str",
+                "to": "100",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 380,
+        "wires": [
+            [
+                "f2125552b181e636",
+                "3154ea93782d15d5"
+            ]
+        ]
+    },
+    {
+        "id": "5d53b8693c827bb6",
+        "type": "change",
+        "z": "006ec4604e200b31",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "lm_on",
+                "fromt": "str",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "lm_off",
+                "fromt": "str",
+                "to": "100",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 440,
+        "wires": [
+            [
+                "3154ea93782d15d5",
+                "bb4d7db2bc072af7"
+            ]
+        ]
+    },
+    {
+        "id": "d8fa49495656d294",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.45.190",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ff27841afe253fc8",
+        "type": "ui_group",
+        "name": "ui",
+        "tab": "bee3ff97530a7de6",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "bee3ff97530a7de6",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

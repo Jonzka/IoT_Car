@@ -1,0 +1,317 @@
+[
+    {
+        "id": "b59acbae1bdd54b9",
+        "type": "rpi-gpio in",
+        "z": "577731a268994dd2",
+        "name": "right_in_15",
+        "pin": "15",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "x": 500,
+        "y": 260,
+        "wires": [
+            [
+                "bfdf2644de0741d2"
+            ]
+        ]
+    },
+    {
+        "id": "84585985daf53281",
+        "type": "rpi-gpio in",
+        "z": "577731a268994dd2",
+        "name": "left_in_37",
+        "pin": "37",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "57f76e79836fef57"
+            ]
+        ]
+    },
+    {
+        "id": "a0e7b4b634b2e325",
+        "type": "rpi-gpio out",
+        "z": "577731a268994dd2",
+        "name": "right_out_12",
+        "pin": "12",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 870,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "27d6c667a9175e94",
+        "type": "rpi-gpio out",
+        "z": "577731a268994dd2",
+        "name": "left_out_32",
+        "pin": "32",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 870,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "bfdf2644de0741d2",
+        "type": "change",
+        "z": "577731a268994dd2",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "rm_on",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "rm_off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 260,
+        "wires": [
+            [
+                "a62194c340e0692e"
+            ]
+        ]
+    },
+    {
+        "id": "57f76e79836fef57",
+        "type": "change",
+        "z": "577731a268994dd2",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "lm_on",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "lm_off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 300,
+        "wires": [
+            [
+                "c619fe4504ae9c69"
+            ]
+        ]
+    },
+    {
+        "id": "bb038d34013f2b8e",
+        "type": "change",
+        "z": "577731a268994dd2",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "rm_on",
+                "fromt": "str",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "rm_off",
+                "fromt": "str",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 380,
+        "wires": [
+            [
+                "a0e7b4b634b2e325"
+            ]
+        ]
+    },
+    {
+        "id": "b8b9fd859f89562c",
+        "type": "change",
+        "z": "577731a268994dd2",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "lm_on",
+                "fromt": "str",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "lm_off",
+                "fromt": "str",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 420,
+        "wires": [
+            [
+                "27d6c667a9175e94"
+            ]
+        ]
+    },
+    {
+        "id": "a62194c340e0692e",
+        "type": "mqtt out",
+        "z": "577731a268994dd2",
+        "name": "",
+        "topic": "right_in",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d8fa49495656d294",
+        "x": 860,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c619fe4504ae9c69",
+        "type": "mqtt out",
+        "z": "577731a268994dd2",
+        "name": "",
+        "topic": "left_in",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "d8fa49495656d294",
+        "x": 850,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c0e73aecbfd49510",
+        "type": "mqtt in",
+        "z": "577731a268994dd2",
+        "name": "",
+        "topic": "right_out",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d8fa49495656d294",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 500,
+        "y": 380,
+        "wires": [
+            [
+                "bb038d34013f2b8e"
+            ]
+        ]
+    },
+    {
+        "id": "02f1c81c3b898e04",
+        "type": "mqtt in",
+        "z": "577731a268994dd2",
+        "name": "",
+        "topic": "left_out",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d8fa49495656d294",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 490,
+        "y": 420,
+        "wires": [
+            [
+                "b8b9fd859f89562c"
+            ]
+        ]
+    },
+    {
+        "id": "d8fa49495656d294",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.45.190",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

@@ -1,0 +1,277 @@
+[
+    {
+        "id": "269aa8f1fdb0e85a",
+        "type": "function",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "",
+        "func": "\n    if (msg.payload== \"lm_on\") {\n        return[null,msg];\n    }\n    else if (msg.payload == \"rm_on\"){\n        return[msg,null];\n    }\n    else if (msg.payload == \"lm_off\"){\n        return[null,msg]\n    }\n    else if (msg.payload == \"rm_off\"){\n        return[msg,null]\n    }",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 260,
+        "wires": [
+            [
+                "bb038d34013f2b8e"
+            ],
+            [
+                "b8b9fd859f89562c"
+            ]
+        ]
+    },
+    {
+        "id": "cc53a219313b01a1",
+        "type": "debug",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b59acbae1bdd54b9",
+        "type": "rpi-gpio in",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "right_in_15",
+        "pin": "22",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "bfdf2644de0741d2"
+            ]
+        ]
+    },
+    {
+        "id": "84585985daf53281",
+        "type": "rpi-gpio in",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "left_in_37",
+        "pin": "26",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "57f76e79836fef57"
+            ]
+        ]
+    },
+    {
+        "id": "a0e7b4b634b2e325",
+        "type": "rpi-gpio out",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "right_out_12",
+        "pin": "18",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 950,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "27d6c667a9175e94",
+        "type": "rpi-gpio out",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "left_out_32",
+        "pin": "12",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 950,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6981be363e5a6453",
+        "type": "debug",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "bfdf2644de0741d2",
+        "type": "change",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "rm_on",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "rm_off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 200,
+        "wires": [
+            [
+                "269aa8f1fdb0e85a"
+            ]
+        ]
+    },
+    {
+        "id": "57f76e79836fef57",
+        "type": "change",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "num",
+                "to": "lm_on",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "num",
+                "to": "lm_off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 320,
+        "wires": [
+            [
+                "269aa8f1fdb0e85a"
+            ]
+        ]
+    },
+    {
+        "id": "bb038d34013f2b8e",
+        "type": "change",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "rm_on",
+                "fromt": "str",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "rm_off",
+                "fromt": "str",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 240,
+        "wires": [
+            [
+                "6981be363e5a6453",
+                "a0e7b4b634b2e325"
+            ]
+        ]
+    },
+    {
+        "id": "b8b9fd859f89562c",
+        "type": "change",
+        "z": "9be4e7e77c2d4ff7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "lm_on",
+                "fromt": "str",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "lm_off",
+                "fromt": "str",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 280,
+        "wires": [
+            [
+                "27d6c667a9175e94",
+                "cc53a219313b01a1"
+            ]
+        ]
+    }
+]
